@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DocReRank:Single-Page Hard Negative Query Generation for Training Multi-Modal RAG Rerankers.">
-  <meta name="keywords" content="DocReRank, Reranking, Retrieval-Augmented Generation, Hard Negative Mining, Multi-Modal Retrieval, Query Generation, Negative Generation, Document Retrieval">
+  <meta name="description" content="BrainExplore: Large-Scale Discovery of Interpretable Visual Representations in the Human Brain.">
+  <meta name="keywords" content="Brain Explore, Brain Interpretability,Automatic Interpretability,Sparse Autoencoders,fMRI,Human Visual System">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="3pKg8Gm5D5IaVeyPwckyPj9I7bYh8Vztx9CvmgeLNak" />
-  <title>DocReRank:Single-Page Hard Negative Query Generation for Training Multi-Modal RAG Rerankers.</title>
+  <title>BrainExplore: Large-Scale Discovery of Interpretable Visual Representations in the Human Brain.</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap">
   <link rel="icon" href="buttons/web_logo3.png">
@@ -169,6 +169,11 @@
     margin: 10px auto 0 auto; /* top margin only */
 
     }
+
+    .figure-caption strong {
+      font-weight: 600;   /* or 700 if you want it stronger */
+    }
+    
     @media (max-width: 768px) {
       .limited-width {
           max-width: 100%;  /* Same as images */
@@ -190,118 +195,87 @@
 </head>
 <body>
   <div class="main-container">
-    <h1>DocReRank</h1>
+    <h1>BrainExplore</h1>
     <br>
-    <h2>Single-Page Hard Negative Query Generation for Training Multi-Modal RAG Rerankers</h2>
+    <h2>Large-Scale Discovery of Interpretable Visual Representations in the Human Brain</h2>
     <p class="author-links">
-      <a href="mailto:navve.wasserman@weizmann.ac.il">Navve Wasserman<sup>1</sup></a> &nbsp;&nbsp; 
-      <a href="mailto:oliver.heinimann@weizmann.ac.il">Oliver Heinimann<sup>1</sup></a> &nbsp;&nbsp; 
+      <a href="mailto:navve.wasserman@weizmann.ac.il">Navve Wasserman<sup>1*</sup></a> &nbsp;&nbsp; 
+      <a href="mailto:matias.cosarinsky@gmail.com ">Matias Cosarinsky<sup>1*</sup></a> &nbsp;&nbsp; 
       <a href="mailto:yuval.golbari@weizmann.ac.il">Yuval Golbari<sup>1</sup></a> &nbsp;&nbsp; 
-      <a href="mailto:tal.zimbalist@weizmann.ac.il">Tal Zimbalist<sup>1</sup></a> &nbsp;&nbsp; 
-      <a href="mailto:eli.schwartz@ibm.com">Eli Schwartz<sup>2</sup></a> &nbsp;&nbsp; 
+      <a href="mailto:oliva@mit.edu ">Aude Oliva<sup>2</sup></a> &nbsp;&nbsp; <br>
+      <a href="mailto:torralba@csail.mit.edu  ">Antonio Torralba<sup>2</sup></a> &nbsp;&nbsp; 
+      <a href="mailto:tamarott@mit.edu  ">Tamar Rott Shaham<sup>2</sup></a> &nbsp;&nbsp; 
       <a href="mailto:michal.irani@weizmann.ac.il ">Michal Irani<sup>1</sup></a>
     </p>
-    <p class="institute"><sup>1</sup>Weizmann Institute of Science &nbsp;&nbsp; <sup>2</sup> IBM Research Israel</p>
+    <p class="institute"><sup>1</sup>Weizmann Institute of Science &nbsp;&nbsp; <sup>2</sup> Massachusetts Institute of Technology</p>
+    <p class="equal-contribution" style="margin-top: 20px;">*Denotes Equal Contribution</p>    
     <br>
 
     <!-- Buttons Section -->
     <div class="image-container">
-      <a href="https://arxiv.org/abs/2505.22584">
+      <a href="XXX">
         <div class="image-item">
           <img src="buttons/paper.jpg" alt="Paper">
           <p class="image-title">Paper</p>
         </div>
       </a>
-      <a href="https://huggingface.co/DocReRank">
+      <a href="https://huggingface.co/spaces/mcosarinsky/BrainExplore-demo">
         <div class="image-item">
-          <img src="buttons/dataset.png" alt="Datasets and Models">
-          <p class="image-title">Datasets and Models</p>
+          <img src="buttons/dataset.png" alt="Demo">
+          <p class="image-title">Demo</p>
+        </div>
+      </a>
+      <a href="XXX">
+        <div class="image-item">
+          <img src="buttons/dataset_soon.png" alt="Datasets and Models">
+          <p class="image-title">Labeled data</p>
         </div>
       </a>
     </div>
 
     <br>
 
-    <h6>Accepted to <em>EMNLP 2025</em></h6>
+    <!-- <h6>Accepted to <em>EMNLP 2025</em></h6> -->
 
     <!-- First Figure: Proposed Benchmark -->
-    <h3 class="section-title">Proposed Single-Page Hard Negative Query Generation Approach</h3>
-    <img class="resized-image" src="figures/teaser.png" alt="Approach">
+    <h3 class="section-title">BrainExplore: Discovering Interpretable Visual Representations in the Human Brain</h3>
+    <img class="resized-image" src="figures/Teaser.png" alt="Approach">
 
     <br>
 
     <!-- Abstract Section -->
     <h3 class="section-title">Abstract</h3>
     <p class="limited-width">
-      Rerankers play a critical role in multimodal Retrieval-Augmented Generation (RAG) by refining ranking of an initial set of retrieved documents. Rerankers are typically trained using hard negative mining, whose goal is to select pages for each query which rank high, but are actually irrelevant. However, this selection process is typically passive and restricted to what the retriever can find in the available corpus, leading to several inherent limitations. These include: limited diversity, negative examples which are often not hard enough, low controllability, and frequent false negatives which harm training. Our paper proposes an alternative approach: Single-Page Hard Negative Query Generation, which goes the other way around. Instead of retrieving negative pages per query, we generate hard negative queries per page. Using an automated LLM-VLM pipeline, and given a page and its positive query, we create hard negatives by rephrasing the query to be as similar as possible in form and context, yet not answerable from the page. This paradigm enables fine-grained control over the generated queries, resulting in diverse, hard, and targeted negatives. It also supports efficient false negative verification. Our experiments show that rerankers trained with data generated using our approach outperform existing models and significantly improve retrieval performance.
+      Understanding how the human brain represents visual concepts, and in which brain regions these representations are encoded, remains a long-standing challenge. Decades of work have advanced our understanding of visual representations, yet brain signals remain large and complex, and the space of possible visual concepts is vast. As a result, most studies remain small-scale, rely on manual inspection, focus on specific regions and properties, and rarely include systematic validation.
+      We present a large-scale, automated framework for discovering and explaining visual representations across the human cortex. Our method comprises two main stages. First, we discover candidate interpretable patterns in fMRI activity through unsupervised, data-driven decomposition methods. Next, we explain each pattern by identifying the set of natural images that most strongly elicit it and generating a natural-language description of their shared visual meaning. To scale this process, we introduce an automated pipeline that tests multiple candidate explanations, assigns quantitative reliability scores, and selects the most consistent description for each voxel pattern. Our framework reveals thousands of interpretable patterns spanning many distinct visual concepts, including fine-grained representations previously unreported.    </p>
+    <br>
+
+  <!-- BrainExplore Framework -->
+  <h3 class="section-title">BrainExplore Framework</h3>
+
+  <img class="resized-image_2" src="figures/Pipeline.png" alt="BrainExplore Framework">
+
+  <div class="figure-caption limited-width">
+    <p>
+      The framework consists of four stages:
+      <strong>(a) Decompose:</strong> Per-region fMRI decomposition to discover interpretable patterns;
+      <strong>(b) Visualize &amp; Explain:</strong> Retrieve the top-activating images for each pattern and interpret its semantics;
+      <strong>(c) Upscale:</strong> Scale to an unlimited number of patterns by constructing a brain-inspired dictionary and labeling each image with respect to each hypothesis;
+      <strong>(d) Discover:</strong> Score pattern–hypothesis alignment, enabling systematic discovery of interpretable patterns and identification of the pattern that best explains a given hypothesis.
     </p>
-
-    <br>
-
-    <!-- Second Figure: Benchmark Construction Pipeline -->
-    <h3 class="section-title">Re-ranking Framework</h3>
-    <img class="resized-image_2" src="figures/reranking_framework.png" alt="Re-ranking Framework">
-    <p class="limited-width">
-      Given a query and a document corpus, a retrieval model first retrieves the
-      top-K relevant pages. A reranker then reorders these K pages based on the query to improve retrieval quality.
-    </p>
-    
-
-
-
-    
-    <h3 class="section-title">Dataset Construction Pipeline.</h3>
-    <div class="image-container">
-      <img class="resized-image_2 transparent-bg" src="figures/Dataset_Construction.png" alt="Construction">
-    </div>
-    <p class="limited-width">
-      Our data construction pipeline implements Single-Page Hard Negative Query Generation, a novel approach that reverses traditional hard negative mining. Instead of retrieving negative pages for each query, we generate multiple hard negative queries for each document page. The process starts by creating positive queries with a Vision-Language Model and verifying their answerability, followed by generating challenging negative queries through an LLM and validating them with a VLM to ensure they are unanswerable yet semantically close to the original. This design enables greater diversity, precise control over difficulty, and efficient verification, resulting in high-quality triplets (page, positive query, hard negatives) that significantly improve reranker performance. Our method also supports domain-specific adaptation—such as finance-focused negatives that alter fine-grained attributes (e.g., years, numbers, entities)—to target real-world challenges.
-    </p>
-    <br>
-
-
-    <h3 class="section-title"> Examples of Our Generated Negative Queries</h3>
-    <div class="image-container">
-      <img class="resized-image_2 transparent-bg" src="figures/data_examples.png" alt="Examples">
-    </div>
-    <p class="limited-width">
-      We show examples of a cropped page and its positive
-      query, along with the generated negative queries. Top: hard negatives generated using the general pipeline. Bottom:
-      negatives generated using finance fine-detail prompts, which modify specific properties in the query.
-    </p>
-    <br>
-
-    <h3 class="section-title"> Model Performance on the ViDoReV2 Benchmark</h3>
-    <img class="resized-image_2" src="figures/Tab_Vidore2-modified.png" alt="Tab_Vidore2">
-    <p class="limited-width">
-      Retrieval NDCG@5 Results. The first row in each block shows first-step retrieval results using ColPali or ColQwen. The remaining rows correspond to second-step
-      reranking results. Our model DocReRank-Base is trained with a similar configuration to MonoQwen but includes
-      our generated data. DocReRank-Full is trained with generated fine-grained details and rephrased negative queries.    
-        </p>
-    <br>
-
-
-    <h3 class="section-title"> Model Performance on the Real-MM-RAG Benchmark</h3>
-    <img class="resized-image_2" src="figures/Tab_real-modified.png" alt="Tab_Real">
-    <p class="limited-width">
-      Retrieval NDCG@5 results of rerankers after the first-step retrieval using ColPali and ColQwen. The left table shows performance on the original benchmark,
-      while the right table shows performance on the rephrased version, where queries were reworded to preserve meaning but use different phrasing.        </p>
-    <br>
-
-
-
-
+  </div>
+  
 
 
     <div class="bibtex-container">
     <h3 class="section-title">BibTeX</h3>
     <pre class="bibtex-code">
-      @article{wasserman2025docrerank,
+      <!-- @article{wasserman2025docrerank,
         title={DocReRank: Single-Page Hard Negative Query Generation for Training Multi-Modal RAG Rerankers},
         author={Wasserman, Navve and Heinimann, Oliver and Golbari, Yuval and Zimbalist, Tal and Schwartz, Eli and Irani, Michal},
         journal={arXiv preprint arXiv:2505.22584},
         year={2025}
-      }
+      } -->
     </pre>
     </div>
 
